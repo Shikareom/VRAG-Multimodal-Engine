@@ -25,7 +25,7 @@
 
 1.  **Clone the Repo**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/video-rag-engine.git](https://github.com/YOUR_USERNAME/video-rag-engine.git)
+    git clone [https://github.com/Shikareom/video-rag-engine.git](https://github.com/Shikareom/video-rag-engine.git)
     cd video-rag-engine
     ```
 
