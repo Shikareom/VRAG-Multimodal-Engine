@@ -1,0 +1,23 @@
+# Ignore Virtual Environment (Crucial)
+venv/
+env/
+.env
+
+# Ignore Python Cache
+__pycache__/
+*.py[cod]
+
+# Ignore Large Data & Media
+data/
+*.mp4
+*.mp3
+*.mov
+
+# Ignore Database Files
+*.db
+chroma_db/
+video_db/
+
+# Ignore Mac/Windows System files
+.DS_Store
+Thumbs.db

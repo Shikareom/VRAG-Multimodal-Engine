@@ -1,0 +1,40 @@
+# MANUAL: How to Upload My Project to GitHub
+
+# Activating the environment from terminal
+1. Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+2. .\venv\Scripts\activate
+
+# ---------------------------------------------------------
+# Follow these steps one by one in your VS Code Terminal.
+
+# STEP 1: PREPARATION
+# Make sure you are inside your project folder: 'Video_Search_AI'
+# Make sure you have created the '.gitignore' file so you don't upload junk.
+
+# STEP 2: START GIT
+# This command tells your computer: "Start tracking changes in this folder."
+git init
+
+# STEP 3: STAGE FILES
+# This command says: "Prepare ALL files (.) for the upload."
+# (It might give some warnings about line endings, you can ignore them).
+git add .
+
+# STEP 4: SAVE SNAPSHOT
+# This wraps everything in a package with a label.
+git commit -m "First upload of VRAG Engine"
+
+# STEP 5: CONNECT TO GITHUB (The Bridge)
+# ⚠️ IMPORTANT: You must replace the URL below with YOUR specific repository link.
+# Go to GitHub.com > New Repository > Create > Copy the HTTP link they give you.
+# It usually looks like: https://github.com/YourUsername/video-rag-engine.git
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME_HERE/video-rag-engine.git
+
+# STEP 6: UPLOAD (Push)
+# This sends the files from your computer to the cloud.
+git push -u origin main
+
+# ---------------------------------------------------------
+# DONE!
+# Refresh your GitHub page to see your code.
