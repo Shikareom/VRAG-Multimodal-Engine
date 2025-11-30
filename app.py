@@ -3,7 +3,7 @@ import os
 import ollama
 import json
 
-# Try importing backend logic
+#importing backend logic
 try:
     from ingest import extract_and_transcribe_audio, analyze_visual_frames
     from rag import index_data, search_video
@@ -11,10 +11,10 @@ except ImportError:
     st.error("Error: Could not find 'ingest.py' or 'rag.py'.")
     st.stop()
 
-# --- PAGE CONFIG ---
+# PAGE CONFIG
 st.set_page_config(layout="wide", page_title="VRAG Engine", initial_sidebar_state="collapsed")
 
-# --- CUSTOM CSS FOR DESIGN & FOOTER ---
+# CSS - DESIGN & FOOTER
 st.markdown("""
 <style>
     /* Force White Background */
@@ -54,7 +54,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- SESSION STATE ---
+# SESSION STATE
 if 'timestamp' not in st.session_state:
     st.session_state.timestamp = 0
 if 'history' not in st.session_state:
@@ -62,7 +62,7 @@ if 'history' not in st.session_state:
 if 'processed' not in st.session_state:
     st.session_state.processed = False
 
-# --- CENTERED UPLOAD SECTION ---
+# CENTERED UPLOAD SECTION
 st.markdown("<h1 style='text-align: center; color: #fff;'>VRAG: Multimodal Search Engine</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: #666;'>Upload a video to chat with its visual and audio content.</p>", unsafe_allow_html=True)
 
@@ -95,7 +95,7 @@ with center_col:
 
 st.divider()
 
-# --- MAIN DISPLAY ---
+#  MAIN DISPLAY 
 if st.session_state.processed and uploaded_file:
     
     vid_col, chat_col = st.columns([1, 2])
@@ -156,7 +156,7 @@ if st.session_state.processed and uploaded_file:
 elif uploaded_file and not st.session_state.processed:
     st.info("Click 'Initialize VRAG System' to activate the AI.")
 
-# --- FOOTER ---
+# footer
 st.markdown("""
 <div class="footer">
     omshikare7077@gmail.com ©

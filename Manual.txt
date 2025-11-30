@@ -35,6 +35,44 @@ git remote add origin https://github.com/YOUR_USERNAME_HERE/video-rag-engine.git
 # This sends the files from your computer to the cloud.
 git push -u origin main
 
-# ---------------------------------------------------------
-# DONE!
-# Refresh your GitHub page to see your code.
+@tech stack
+
+1. The AI Models (The Brains)
+Llama 3 (8B Instruct): The main Large Language Model (LLM) used for reasoning and answering questions. It runs via Ollama.
+
+Moondream 2: The Vision Language Model (VLM) used to look at images (frames) and generate text descriptions. Optimized for low-memory devices.
+
+OpenAI Whisper (Base): The Automatic Speech Recognition (ASR) model used to convert the spoken audio track into text.
+
+all-MiniLM-L6-v2: The Embedding Model from SentenceTransformers. It converts English text into a 384-dimensional vector (a list of numbers) so the computer can understand "meaning."
+
+2. The Algorithms & Techniques
+RAG (Retrieval-Augmented Generation): The overarching architecture. You retrieve relevant facts first, then ask the AI to generate an answer based only on those facts.
+
+HNSW (Hierarchical Navigable Small World): The specific algorithm ChromaDB uses to search through vectors. It is much faster than checking every single document (Approximate Nearest Neighbor search).
+
+Cosine Similarity: The mathematical formula used to measure how "close" the user's question is to the video content vectors.
+
+Quantization (4-bit/GGUF): The compression technique used by Ollama to make Llama 3 and Moondream fit into your RAM (shrinking them from ~16GB to ~4GB).
+
+Prompt Engineering: The specific instruction logic (f"Context: {x}, Question: {y}, Answer:...") injected into the Python code to control the AI's behavior.
+
+3. The Python Libraries (The Tools)
+Streamlit: The web framework that handles the UI, session state (memory), and the video player.
+
+ChromaDB: The vector database that stores the "knowledge" (text + embeddings).
+
+Ollama (Python Client): The bridge that allows your Python script to talk to the local AI server.
+
+OpenCV (cv2): A computer vision library used to read the video file and capture specific frames as images.
+
+MoviePy: A multimedia library used to strip the audio track out of the MP4 file.
+
+NumPy: Used silently in the background by OpenCV and ChromaDB to handle matrix math for images and vectors.
+
+4. The Infrastructure
+Ollama (Server): The background service that manages the AI models and hardware acceleration (GPU/CPU offloading).
+
+SQLite: The internal relational database used by ChromaDB to store metadata (like timestamps and IDs), while the vectors are stored in binary files.
+
+Virtual Environment (venv): The isolated Python sandbox created to manage these specific dependency versions without breaking your system.
