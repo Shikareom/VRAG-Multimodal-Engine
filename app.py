@@ -159,6 +159,6 @@ elif uploaded_file and not st.session_state.processed:
 # footer
 st.markdown("""
 <div class="footer">
-    omshikare7077@gmail.com ©
+    ©omshikare7077@gmail.com 
 </div>
 """, unsafe_allow_html=True)
