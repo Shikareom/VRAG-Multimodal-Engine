@@ -154,7 +154,7 @@ if st.session_state.processed and uploaded_file:
                 st.warning("No answer found in video.")
 
 elif uploaded_file and not st.session_state.processed:
-    st.info("Click 'Initialize VRAG System' to activate the AI.")
+    st.info("Click 'Initialize' to activate the AI.")
 
 # footer
 st.markdown("""
