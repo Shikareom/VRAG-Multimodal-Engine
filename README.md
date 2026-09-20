@@ -1,57 +1,109 @@
 # VRAG: Multimodal Video Search Engine
 
-**VRAG (Video Retrieval-Augmented Generation)** is an AI-powered tool that understands video content. It allows users to "chat" with a video by analyzing both visual frames and audio tracks simultaneously.
+**VRAG (Video Retrieval-Augmented Generation)** is a local AI application that lets users search and interact with video using natural-language questions. It combines **audio transcription, visual understanding, semantic retrieval, and LLM reasoning** into a single workflow.
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![AI](https://img.shields.io/badge/AI-Ollama%20%7C%20Llama3-orange)
-![Stack](https://img.shields.io/badge/Stack-Streamlit%20%7C%20ChromaDB-green)
+![LLM](https://img.shields.io/badge/LLM-Llama%203-orange)
+![Vision](https://img.shields.io/badge/Vision-Moondream-purple)
+![Vector%20DB](https://img.shields.io/badge/Vector%20DB-ChromaDB-green)
+![UI](https://img.shields.io/badge/UI-Streamlit-red)
 
-## Features
+## Why VRAG?
 
-* **1. Multimodal Intelligence:** Uses **Moondream** for visual scene understanding and **Whisper** for audio transcription.
-* **2. Semantic Search:** Powered by **ChromaDB**, allowing natural language queries (e.g., *"Show me the red car"*).
-* **3. Context-Aware Chat:** Integrated with **Llama 3** to answer questions based on specific video timestamps.
-* **4. Smart Playback:** Click on an AI citation to instantly jump the video player to that exact second.
+Traditional video search often depends on manually scrubbing through a timeline. VRAG converts video into searchable multimodal context so users can ask questions such as:
+
+- "Where does the red car appear?"
+- "Summarize what is being said."
+- "When does the screen turn blue?"
+
+The system can return relevant context with timestamps so users can move directly to the corresponding point in the video.
+
+## Architecture
+
+`Video`
+→ **Audio / Frames**
+→ **Whisper + Moondream**
+→ **Structured Multimodal Context**
+→ **ChromaDB Retrieval**
+→ **Llama 3**
+→ **Answer + Timestamp**
+
+## Key Features
+
+- **Multimodal understanding** — combines spoken content and visual information.
+- **Semantic video search** — retrieves relevant moments from natural-language queries.
+- **Context-aware answers** — uses Llama 3 to answer against retrieved video context.
+- **Timestamp navigation** — connects responses back to relevant moments in the video.
+- **Local-first workflow** — uses Ollama for local model execution.
 
 ## Tech Stack
 
-* **Frontend:** Streamlit (Custom UI with Chat History)
-* **LLM:** Llama 3 (via Ollama)
-* **Vision Model:** Moondream (via Ollama)
-* **Vector DB:** ChromaDB
-* **Orchestration:** LangChain / Python
+| Layer | Technology |
+|---|---|
+| UI | Streamlit |
+| LLM | Llama 3 via Ollama |
+| Vision | Moondream |
+| Speech-to-text | Whisper |
+| Vector database | ChromaDB |
+| Orchestration | LangChain |
+| Language | Python |
 
-## ⚙️ Installation
+## Project Structure
 
-1.  **Clone the Repo**
-    ```bash
-    git clone [https://github.com/Shikareom/video-rag-engine.git](https://github.com/Shikareom/video-rag-engine.git)
-    cd video-rag-engine
-    ```
+```text
+.
+├── app.py            # Streamlit application
+├── ingest.py         # Audio/visual ingestion pipeline
+├── rag.py            # Retrieval and generation workflow
+├── Manual.txt        # User/developer notes
+├── requirements.txt
+└── packages.txt
+```
 
-2.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+## Installation
 
-3.  **Setup Ollama**
-    Download [Ollama](https://ollama.com) and pull the required models:
-    ```bash
-    ollama pull llama3
-    ollama pull moondream
-    ```
+### 1. Clone the repository
 
-4.  **Run the App**
-    ```bash
-    streamlit run app.py
-    ```
+```bash
+git clone https://github.com/Shikareom/VRAG-Multimodal-Engine.git
+cd VRAG-Multimodal-Engine
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Install Ollama models
+
+Install [Ollama](https://ollama.com), then pull the required models:
+
+```bash
+ollama pull llama3
+ollama pull moondream
+```
+
+### 4. Run the application
+
+```bash
+streamlit run app.py
+```
 
 ## Usage
 
-1.  Upload an MP4 video file.
-2.  Click **"Initialize VRAG System"**.
-3.  Wait for the Audio/Visual ingestion pipeline to finish.
-4.  Start chatting! (e.g., *"Summarize the speech"* or *"When does the screen turn blue?"*)
+1. Upload an MP4 video.
+2. Initialize the VRAG pipeline.
+3. Allow the audio/visual ingestion process to complete.
+4. Ask questions about the video in natural language.
+5. Use returned timestamps to jump to relevant moments.
+
+## Notes
+
+The repository is intended as an experimental multimodal RAG system. Local model performance and processing time depend on the available CPU/GPU resources.
 
 ---
-*Created by Om Shikare*
+
+Built by **Om Shikare**.
+
+[LinkedIn](https://www.linkedin.com/in/omshikare/)
